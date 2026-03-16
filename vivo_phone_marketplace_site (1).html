@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vivo Phone Marketplace</title>
+<style>
+body{font-family:Arial;margin:0;background:#f4f4f4}
+header{background:#415fff;color:white;padding:15px;text-align:center}
+nav{background:#222;padding:10px;text-align:center}
+nav a{color:white;margin:0 15px;text-decoration:none;font-weight:bold}
+.container{padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;border-radius:10px;padding:15px;box-shadow:0 2px 6px rgba(0,0,0,0.1);text-align:center}
+.card img{width:100%;height:180px;object-fit:contain}
+button{background:#415fff;color:white;border:none;padding:10px 15px;border-radius:5px;cursor:pointer}
+button:hover{opacity:.9}
+form{background:white;padding:20px;border-radius:10px;max-width:500px;margin:auto}
+input,textarea{width:100%;padding:10px;margin:10px 0}
+footer{text-align:center;padding:15px;background:#222;color:white;margin-top:20px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Vivo Phone Marketplace</h1>
+<p>Buy and Sell Vivo Phones</p>
+</header>
+
+<nav>
+<a href="#buy">Buy Phones</a>
+<a href="#sell">Sell Phone</a>
+</nav>
+
+<div class="container" id="buy">
+<h2>Available Phones</h2>
+<div class="grid" id="phoneList">
+
+<div class="card">
+<img src="https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x90-1.jpg">
+<h3>Vivo X90</h3>
+<p>Price: $650</p>
+<button onclick="alert('Seller will contact you')">Buy</button>
+</div>
+
+<div class="card">
+<img src="https://fdn2.gsmarena.com/vv/pics/vivo/vivo-v27-1.jpg">
+<h3>Vivo V27</h3>
+<p>Price: $420</p>
+<button onclick="alert('Seller will contact you')">Buy</button>
+</div>
+
+<div class="card">
+<img src="https://fdn2.gsmarena.com/vv/pics/vivo/vivo-y36-1.jpg">
+<h3>Vivo Y36</h3>
+<p>Price: $280</p>
+<button onclick="alert('Seller will contact you')">Buy</button>
+</div>
+
+</div>
+</div>
+
+<div class="container" id="sell">
+<h2>Sell Your Vivo Phone</h2>
+<form onsubmit="addPhone(event)">
+<input type="text" id="name" placeholder="Phone Model" required>
+<input type="text" id="price" placeholder="Price" required>
+<input type="text" id="image" placeholder="Image URL" required>
+<textarea placeholder="Description"></textarea>
+<button type="submit">Post Ad</button>
+</form>
+</div>
+
+<footer>
+<p>Demo Vivo Marketplace Website</p>
+</footer>
+
+<script>
+function addPhone(e){
+ e.preventDefault();
+ let name=document.getElementById('name').value;
+ let price=document.getElementById('price').value;
+ let image=document.getElementById('image').value;
+
+ let card=document.createElement('div');
+ card.className='card';
+ card.innerHTML=`<img src="${image}"><h3>${name}</h3><p>Price: ${price}</p><button>Buy</button>`;
+
+ document.getElementById('phoneList').appendChild(card);
+ e.target.reset();
+}
+</script>
+
+</body>
+</html>
